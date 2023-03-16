@@ -29,7 +29,7 @@ export default class Text {
         new EmojiRun(run) :
         new TextRun(run)
       );
-      this.text = this.runs.map((run) => run.text).join('');
+      this.text = this.runs.map((run) => run instanceof EmojiRun && run.emoji.is_custom ? '' : run.tex).join('');
     } else {
       this.text = data?.simpleText;
     }
